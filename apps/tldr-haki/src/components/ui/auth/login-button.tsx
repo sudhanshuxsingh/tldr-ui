@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Button, buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { useEffect } from "react";
+
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function LoginButton() {
     const router = useRouter();
@@ -12,13 +12,13 @@ export default function LoginButton() {
         router.prefetch("/auth/login");
         const down = (e: KeyboardEvent) => {
             if (e.key.toLowerCase() === "l") {
-                e.preventDefault()
+                e.preventDefault();
                 router.push("/auth/login");
             }
-        }
-        document.addEventListener("keydown", down)
-        return () => document.removeEventListener("keydown", down)
-    }, [])
+        };
+        document.addEventListener("keydown", down);
+        return () => document.removeEventListener("keydown", down);
+    }, []);
 
     return (
         <Button asChild variant="ghost" className="group/login-btn gap-1">
@@ -29,7 +29,5 @@ export default function LoginButton() {
                 </kbd>
             </Link>
         </Button>
-    )
+    );
 }
-
-// className={cn(buttonVariants({ variant: "ghost" }), "items-center text-sm text-muted-foreground")}
