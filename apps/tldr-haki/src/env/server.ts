@@ -4,7 +4,15 @@ import { z } from "zod";
 export const env = createEnv({
   server: {
     DATABASE_URL: z.string().url(),
-    OPEN_AI_API_KEY: z.string().min(1),
+  },
+  onValidationError: (issues) => {
+    console.error("❌ Invalid environment variables:", issues);
+    throw new Error("Invalid environment variables");
+  },
+  onInvalidAccess: (variable: string) => {
+    throw new Error(
+      `❌ Attempted to access ${variable} a server-side environment variable on the client`
+    );
   },
   // If you're using Next.js < 13.4.4, you'll need to specify the runtimeEnv manually
   // runtimeEnv: {
