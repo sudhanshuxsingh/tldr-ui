@@ -16,6 +16,8 @@ const eslintConfig = [
     rules: {
       "prefer-arrow-callback": ["error"],
       "prefer-template": ["error"],
+      "semi": ["error"],
+      "quotes": ["error", "double"],
       "check-file/filename-naming-convention": [
         "error",
         {
